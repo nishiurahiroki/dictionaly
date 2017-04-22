@@ -1,0 +1,49 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+
+.header {
+    overflow: auto;
+    height: 80px;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #00BFFF;
+}
+.header .headerText {
+  color: #00BFFF;
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: 50px;
+}
+.left {
+    float: left;
+    width: 150px;
+    height:auto;
+}
+.main {
+    background: slategray;
+    order: 2;
+    flex: 2 0px;
+    height: 300px;
+}
+
+ul {
+  padding: 0;
+  position: relative;
+}
+
+ul li {
+  color: white;
+  background: #00BFFF;
+  line-height: 1.5;
+  padding: 0.5em 0.5em 0.5em 1em;
+  border-bottom: 2px solid white;
+  list-style-type: none!important;
+  font-weight: bold; /*好みで太字に*/
+}
+
+ul li:before {/*疑似要素*/
+  font-family: FontAwesome;
+  position: absolute;
+  left : 0.1em; /*左端からのアイコンまでの距離*/
+  color: white; /*アイコン色*/
+}
