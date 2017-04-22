@@ -4,9 +4,6 @@ import ReactDom from 'react-dom';
 import Header from './header';
 import SideMenu from './sideMenu';
 
-import Register from './contents/register';
-import List from './contents/list';
-
 import Screen from './libs/screen';
 
 class App extends React.Component {
