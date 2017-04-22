@@ -5,6 +5,9 @@ import Header from './header';
 import SideMenu from './sideMenu';
 
 import Register from './contents/register';
+import List from './contents/list';
+
+import Screen from './libs/screen';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,33 +17,11 @@ class App extends React.Component {
     };
   }
 
-  getMenus() {
-    return [
-      {
-        key  : 'regist',
-        name : '登録'
-      },
-      {
-        key  : 'list',
-        name : '一覧'
-      }
-    ];
-  }
-
   changeMainContents() {
     return (e) => {
-      let screenName = e.target.getAttribute('data-screen');
-      const SCREENS = {
-        regist : (
-          <Register />
-        ),
-        list : (
-          <Register />
-        )
-      }
-
+      let key = e.target.getAttribute('data-screen-key');
       this.setState({
-        selectedMainContents : SCREENS[screenName]
+        selectedMainContents : Screen.get(key)
       });
     };
   }
@@ -49,7 +30,7 @@ class App extends React.Component {
     return (
       <div id="main">
         <Header text="辞書登録" />
-        <SideMenu menus={this.getMenus()} onClick={this.changeMainContents()} />
+        <SideMenu menus={Screen.getMenuInfos()} onClick={this.changeMainContents()} />
 
         <div id="mainContents" style={{padding:'20px'}}>
           {this.state.selectedMainContents}

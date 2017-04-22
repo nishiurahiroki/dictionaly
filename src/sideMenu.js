@@ -14,7 +14,7 @@ export default class SideMenu extends React.Component {
     return parent.menus.map(function(menu) {
       return (
         <li key={menu.key}
-            data-screen={menu.key}
+            data-screen-key={menu.key}
             onClick={parent.changeSideMenu}>
           {menu.name}
         </li>
