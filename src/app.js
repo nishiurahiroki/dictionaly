@@ -4,7 +4,8 @@ import ReactDom from 'react-dom';
 import Header from './header';
 import SideMenu from './sideMenu';
 
-import Screen from './libs/screen';
+import Screen from './util/screen';
+
 
 class App extends React.Component {
   constructor(props) {
