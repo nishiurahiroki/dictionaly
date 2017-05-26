@@ -8,6 +8,10 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    devServer : {
+      port : 80,
+      inline : true
+    },
     module: {
         loaders: [
             {
