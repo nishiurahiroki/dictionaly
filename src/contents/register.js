@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Dictionaly from '../repository/DictionalyRepository';
+import DictionalyRepository from '../repository/DictionalyRepository';
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -13,15 +13,19 @@ export default class Register extends React.Component {
   }
 
   syncValue(e) {
-    let itemKey = e.target.name;
-    let itemValue = e.target.value;
-    let changedValue = {};
+    const itemKey = e.target.name;
+    const itemValue = e.target.value;
+    const changedValue = {};
     changedValue[itemKey] = itemValue;
     this.setState(changedValue);
   }
 
   save() {
-    Dictionaly.save(this.state);
+    const dictionalyRepository = new DictionalyRepository();
+    dictionalyRepository.save({
+      key : this.state.japanaseName,
+      entity : this.state
+    });
   }
 
   render() {

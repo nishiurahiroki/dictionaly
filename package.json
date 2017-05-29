@@ -6,13 +6,13 @@
   "scripts": {
     "develop": "concurrently \"webpack -d --watch\" \"webpack-dev-server\"",
     "watch": "webpack -d --watch",
-    "server" : "webpack-dev-server",
+    "server": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "nishiurahiroki",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^3.8.0",
+    "firebase": "^3.9.0",
     "firebase-admin": "^4.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

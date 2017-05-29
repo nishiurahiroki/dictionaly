@@ -1,5 +1,7 @@
-export default class DictionalyRepository {
-  static save(dictionaly) {
-    console.log('test');
+import Repository from './repository'
+
+export default class DictionalyRepository extends Repository {
+  constructor() {
+    super({ name : 'dictionaly' });
   }
 }
