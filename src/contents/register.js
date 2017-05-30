@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DictionalyRepository from '../repository/DictionalyRepository';
+import DictionalyRepository from '../repository/dictionalyRepository';
 
 export default class Register extends React.Component {
   constructor(props) {

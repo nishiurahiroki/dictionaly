@@ -8,12 +8,9 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
-    externals :  {
-      sqlite3 : 'sqlite3'
-    },
     devServer : {
       port : 80,
-      inline : true
+      host : '0.0.0.0'
     },
     module: {
         loaders: [
