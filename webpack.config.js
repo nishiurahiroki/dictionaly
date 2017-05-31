@@ -5,12 +5,8 @@ module.exports = {
         bundle: './front/app.js'
     },
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'resources'),
         filename: 'bundle.js'
-    },
-    devServer : {
-      port : 80,
-      host : '0.0.0.0'
     },
     module: {
         loaders: [

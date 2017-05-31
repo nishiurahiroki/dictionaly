@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "concurrently \"webpack -d --watch\" \"webpack-dev-server\"",
     "watch": "webpack -d --watch",
     "build": "webpack -d",
     "server": "webpack-dev-server",

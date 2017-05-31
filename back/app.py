@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+app.config.update({'DEBUG':True})
 
 @app.route('/')
 def top():
