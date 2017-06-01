@@ -1,10 +1,16 @@
 version: '2'
 services:
   web:
-    build: .
+    build: ./application/.
     ports:
      - "80:80"
     volumes:
-     - ./back:/ap
-     - ./public:/ap/templates
-     - ./resources:/ap/static
+     - ./application/back:/ap
+     - ./application/public:/ap/templates
+     - ./application/resources:/ap/static
+    links:
+     - db
+  db:
+    build: ./database/.
+    ports:
+     - "5432:5432"
