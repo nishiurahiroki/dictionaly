@@ -2,6 +2,7 @@ FROM python:latest
 
 # flask
 RUN pip install flask
+RUN pip install flask-sqlalchemy
 
 RUN mkdir /ap
 RUN mkdir /ap/templates
