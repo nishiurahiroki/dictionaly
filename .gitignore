@@ -1,2 +1,3 @@
 node_modules
 application/back/repositorys/__pycache__
+application/resources/bundle.js
