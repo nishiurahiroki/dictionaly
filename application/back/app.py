@@ -1,11 +1,10 @@
+import json
+import flask
 from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from repositorys.dictionalyRepository import DictionalyRepository
 
 app = Flask(__name__, static_url_path='/static')
 app.config.update({'DEBUG':True})
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:@db/postgres'
-SQLAlchemy(app)
-
 
 @app.route('/')
 def top():
@@ -14,20 +13,41 @@ def top():
 
 @app.route('/api/regist', methods=['POST'])
 def regist():
-    # TODO
-    return jsonify({'test':'regist'})
+    dictionaly = DictionalyRepository(
+        flask.request.json['japanase_name'],
+        flask.request.json['english_name'],
+        flask.request.json['descliption']
+    )
+    dictionaly.db.session.add(dictionaly)
+    dictionaly.db.session.commit()
+    
+    return jsonify({
+        'result' : 'success'
+    })
 
 
-@app.route('/api/delete', methods=['POST'])
+@app.route('/api/delete', methods=['POST', 'GET'])
 def delete():
     # TODO
-    return jsonify({'test':'delete'})
+    return jsonify({
+        'result':'success'
+    })
 
 
 @app.route('/api/search', methods=['GET'])
 def search():
-    # TODO
-    return jsonify({'test':'search'})
+    query = DictionalyRepository.query.all()
+    # TODO イテレータの扱い方に迷いを感じる
+    dictionalys = map(lambda data:
+                      {
+                          'japanaseName' : data.japanase_name
+                      }
+                      , query)
+    
+
+    return jsonify(
+        list(dictionalys)
+    )
 
 
 if __name__ == '__main__':
