@@ -5,13 +5,15 @@ import DictionalyRepository from '../repository/dictionalyRepository';
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    const dictionalyRepository = new DictionalyRepository();
-    this.dictionalys = dictionalyRepository.findAll();
+    this.dictionalyRepository = new DictionalyRepository();
+    this.state = {
+	dictionalys : ''
+    };
     this.headers = [
       '和名',
       '英名',
       '説明',
-      ' ' // 削除ボタン
+      '' // 削除ボタン
     ];
   }
 
@@ -27,37 +29,37 @@ export default class List extends React.Component {
     )
   }
 
-  showDatas() {
+  async componentDidMount() {
     const _this = this;
-    const datas = this.dictionalys.map((data) => {
-      return (
-        <tr key={data.japanaseName}>
-          <td>{data.japanaseName}</td>
-          <td>{data.englishName}</td>
-          <td>{data.description}</td>
-          <td><button onClick={_this.del.bind(_this, data.japanaseName)}>削除</button></td>
-        </tr>
-      )
+    const query = await this.dictionalyRepository.findAll();
+    const datas = query.map((data) => {
+	return (<tr key={data.japanaseName}>
+		<td>{data.japanaseName}</td>
+		<td>{data.englishName}</td>
+		<td>{data.descliption}</td>
+		<td><button onClick={_this.del.bind(_this, data.japanaseName)}>削除</button></td>
+		</tr>
+	       )
     });
-    return (
-      <tbody>
-        {datas}
-      </tbody>
-    )
+    this.setState({
+	dictionalys : (<tbody>
+		       {datas}
+		       </tbody>
+		      )
+    });
   }
 
   del(key) {
-    const dictionalyRepository = new DictionalyRepository();
-    dictionalyRepository.del(key);
+    this.dictionalyRepository.del(key);
   }
 
-  render () {
-    return (
+   render () {
+     return (
       <div>
         <div>
           <table>
             {this.showHeader()}
-            {this.showDatas()}
+            {this.state.dictionalys}
           </table>
         </div>
       </div>

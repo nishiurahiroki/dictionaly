@@ -13,10 +13,11 @@ def top():
 
 @app.route('/api/regist', methods=['POST'])
 def regist():
+    param = flask.request.values;
     dictionaly = DictionalyRepository(
-        flask.request.json['japanase_name'],
-        flask.request.json['english_name'],
-        flask.request.json['descliption']
+        param.get('japanase_name'),
+        param.get('english_name'),
+        param.get('descliption')
     )
     dictionaly.db.session.add(dictionaly)
     dictionaly.db.session.commit()
@@ -26,9 +27,12 @@ def regist():
     })
 
 
-@app.route('/api/delete', methods=['POST', 'GET'])
+@app.route('/api/delete', methods=['POST'])
 def delete():
-    # TODO
+    key = flask.request.values.get('key');
+    dictionaly = DictionalyRepository.query.filter_by(japanase_name = key).first()
+    dictionaly.db.session.delete(dictionaly)
+    dictionaly.db.session.commit()
     return jsonify({
         'result':'success'
     })
@@ -37,14 +41,14 @@ def delete():
 @app.route('/api/search', methods=['GET'])
 def search():
     query = DictionalyRepository.query.all()
-    # TODO イテレータの扱い方に迷いを感じる
     dictionalys = map(lambda data:
                       {
-                          'japanaseName' : data.japanase_name
+                          'japanaseName' : data.japanase_name,
+                          'englishName' : data.english_name,
+                          'descliption' : data.descliption
                       }
                       , query)
     
-
     return jsonify(
         list(dictionalys)
     )

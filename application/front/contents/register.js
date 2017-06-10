@@ -8,7 +8,7 @@ export default class Register extends React.Component {
     this.state = {
       japanaseName : '',
       englishName : '',
-      description : ''
+      descliption : ''
     }
   }
 
@@ -23,8 +23,9 @@ export default class Register extends React.Component {
   save() {
     const dictionalyRepository = new DictionalyRepository();
     dictionalyRepository.save({
-      key : this.state.japanaseName,
-      entity : this.state
+	japanase_name : this.state.japanaseName,
+	english_name : this.state.englishName,
+	descliption : this.state.descliption
     });
   }
 
@@ -38,7 +39,7 @@ export default class Register extends React.Component {
           英名 : <input type="text" name="englishName"  onChange={this.syncValue.bind(this)} value={this.englishName} />
         </div>
         <div>
-          説明 : <textarea name="description"  onChange={this.syncValue.bind(this)}>{this.description}</textarea>
+          説明 : <textarea name="descliption" onChange={this.syncValue.bind(this)}>{this.descliption}</textarea>
         </div>
         <div>
           <button onClick={this.save.bind(this)}>登録</button>
