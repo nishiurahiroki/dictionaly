@@ -11,7 +11,7 @@ export default class SideMenu extends React.Component {
 
   getMenus() {
     let parent = this.state;
-    return parent.menus.map(function(menu) {
+    return parent.menus.map((menu) => {
       return (
         <li key={menu.key}
             data-screen-key={menu.key}

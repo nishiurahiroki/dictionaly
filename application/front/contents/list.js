@@ -50,7 +50,9 @@ export default class List extends React.Component {
   }
 
   del(key) {
-    this.dictionalyRepository.del(key);
+   this.dictionalyRepository.del(key).then(() => {
+    alert('削除しました');
+   });  
   }
 
    render () {

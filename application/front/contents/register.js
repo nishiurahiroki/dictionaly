@@ -26,6 +26,8 @@ export default class Register extends React.Component {
 	japanase_name : this.state.japanaseName,
 	english_name : this.state.englishName,
 	descliption : this.state.descliption
+    }).then(() => {
+	alert('登録しました。');
     });
   }
 
