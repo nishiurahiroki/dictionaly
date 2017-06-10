@@ -1,13 +1,13 @@
 version: '2'
 services:
   web:
-    build: ./application/.
+    build: ./backend/.
     ports:
      - "80:80"
     volumes:
-     - ./application/back:/ap
-     - ./application/public:/ap/templates
-     - ./application/resources:/ap/static
+     - ./backend:/ap
+     - ./backend/templates:/ap/templates
+     - ./resources:/ap/static
     links:
      - db
   db:
@@ -16,3 +16,8 @@ services:
      - ./database/execSqlFiles:/docker-entrypoint-initdb.d
     ports:
      - "5432:5432"
+  front:
+    build: ./frontend/.
+    volumes:
+     - ./frontend/src:/app/src
+     - ./resources:/app/output
